@@ -1,0 +1,16 @@
+<% layout('template') -%>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <img class="img-circle img-responsive img-center" src="<%= user.profile.profile_img %>" alt="">
+    <br/>
+    <p>Name: <%= user.profile.name %></p>
+    <p>Email: <%= user.email %> </p>
+    <% if (user.profile.address === "" || typeof user.profile.address === 'undefined') { %>
+      <p>Address: <span style="color:#c0392b; font-weight: bold">No address</span></p>
+      <% } else { %>
+    <p>Address: <%= user.profile.address %> </p>
+    <% } %>
+    <a href="/editProfile" class="btn btn-default btn-lg">Edit Profile</a>
+  </div>
+</div>

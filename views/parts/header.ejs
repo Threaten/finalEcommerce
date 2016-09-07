@@ -1,0 +1,79 @@
+<header id="home">
+  <div class="row" ">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <!-- menu 4 -->
+      <div class="navbar navbar-default default-menu menu-4" role="navigation">
+        <div class="container">
+          <div class="navbar-header" id="header-gap">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-4" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand default-logo" href="/">Threaten</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="menu-4">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a class="scroll" href="/">Home</a></li>
+              <li><a class="scroll" href="/about">About us</a></li>
+              <li><a class="scroll" href="#contact">Contact</a></li>
+              <% if (user) { %>
+              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"><span class="cart-number"><%= cart %></span></i></a>
+                <ul class="dropdown-menu cart">
+                  <li><img src="images/cart1.jpg" alt=""/>
+                    <i class="fa fa-trash-o pull-right"></i>
+                    <strong>Women / Clothe</strong>
+                    <small>Bright Desses in Leaf</small>
+                    <span>2 X 400</span></li>
+                    <li><p><i class="fa fa-trash-o"></i> Empty Carts <span class="pull-right">SubTotal : <span><span class="color">$1200</span></span></p></li>
+                    <li class="text-center"><p><a class="btn btn-default" href="#">View Cart</a> <a class="btn btn-default" href="#">Checkout</a></p></li>
+                  </ul>
+                </li>
+                <% }else { %>
+                  <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"><span class="cart-number">0</span></i></a>
+                  <% } %>
+                <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories</a>
+                  <ul class="dropdown-menu">
+                  <% for (var i = 0; i < categories.length; i++) { %>
+                  <li><a href="/products/<%= categories[i]._id %>"><%= categories[i].name %></a></li>
+                <% } %>
+              </ul>
+                </li>
+
+
+                <% if (!user) { %>
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"/>Register/Login</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/register">Register</a></li>
+                    <li><a href="/login">Login</a></li>
+                  </ul>
+                </li>
+                <% } else { %>
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"/><%= user.profile.name %></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">logout</a></li>
+                  </ul>
+                </li>
+                <% } %>
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i></a>
+                  <ul class="dropdown-menu list-search">
+                    <li>
+                      <form class="navbar-form navbar-left nav-search" role="search" method="post" action="/search">
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="query" placeholder="Search">
+                          <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                      </form>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div><!-- end menu -->
+      </div>
+    </div>
+  </header>
